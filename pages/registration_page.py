@@ -22,12 +22,7 @@ class RegistrationPage:
             f'.react-datepicker__day--0{user.day_of_birth}:not(.react-datepicker__day--outside-month)'
         ).click()
         browser.element('#subjectsInput').should(be.visible).type(user.subject).press_enter()
-        if 'Sports' in user.hobby:
-            browser.element('label[for=hobbies-checkbox-1]').should(be.visible).click()
-        if 'Reading' in user.hobby:
-            browser.element('label[for=hobbies-checkbox-2]').should(be.visible).click()
-        if 'Music' in user.hobby:
-            browser.element('label[for=hobbies-checkbox-3]').should(be.visible).click()
+        browser.all('.custom-checkbox').element_by(have.exact_text(user.hobby)).click()
         browser.element('#uploadPicture').should(be.visible).type(resource.path(user.picture))
         browser.element('#currentAddress').should(be.visible).type(user.current_address)
         browser.element("#react-select-3-input").should(be.visible).type(user.state).press_enter()
