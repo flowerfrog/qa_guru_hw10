@@ -2,6 +2,8 @@ import os
 from selene import have, command, be
 from selene.support.shared import browser
 
+import resource
+
 
 class RegistrationPage:
 
@@ -47,7 +49,7 @@ class RegistrationPage:
         return self
 
     def upload_image(self):
-        browser.element('//input[@type="file"]').type(os.path.abspath("resources/image.jpg"))
+        browser.element('//input[@type="file"]').type(resource.path("image.jpg"))
         return self
 
     def fill_current_address(self, value):
